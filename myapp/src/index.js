@@ -3,30 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import About from './pages/About'
+import Home from './pages/Home'
 
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
+      <header>
+        <Link to="/">#VANLIFE</Link>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </nav>
+      </header>
       <Routes>
         <Route path="/" element={<Home></Home>} />
         <Route path="/about" element={<About></About>} />
       </Routes>
     </BrowserRouter>)
-}
-
-function Home() {
-  return (
-    <h1>This is the Home page!</h1>
-  )
-}
-
-function About() {
-  return (
-    <h1>About page goes here!</h1>)
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
