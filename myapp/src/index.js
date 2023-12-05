@@ -12,6 +12,7 @@ import Dashboard from './pages/Host/Dashboard'
 import Income from './pages/Host/Income'
 import Reviews from './pages/Host/Reviews'
 import HostLayout from './component/HostLayout';
+import Footer from './component/Footer'
 import './server'
 
 
@@ -24,9 +25,13 @@ function App() {
           {/* 可以把path="/"寫成index，如果點擊其他路徑就不會是index所以頁面上不會顯示 */}
           <Route path="/" element={<Home></Home>} />
           <Route path="about" element={<About></About>} />
+          {/*也可以這樣寫
+           <Route path="vans">
+            <Route index element={<Vans></Vans>} />
+            <Route path=":id" element={<VanDetail></VanDetail>} />
+          </Route> */}
           <Route path="vans" element={<Vans></Vans>} />
           <Route path="vans/:id" element={<VanDetail></VanDetail>} />
-
           <Route path="host" element={<HostLayout />}>
             {/* 也可以寫成path="/"，但這樣就會變成絕對路徑 */}
             <Route index element={<Dashboard></Dashboard>} />
