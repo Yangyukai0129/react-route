@@ -2,18 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import About from './pages/About'
 import Home from './pages/Home'
 import Vans from './pages/Vans/Vans'
 import VanDetail from './pages/Vans/VanDetail';
 import Layout from './component/Layout'
+import HostLayout from './component/HostLayout';
 import Dashboard from './pages/Host/Dashboard'
 import Income from './pages/Host/Income'
 import Reviews from './pages/Host/Reviews'
-import HostLayout from './component/HostLayout';
-import Footer from './component/Footer'
+import HostVans from './pages/Host/HostVans';
+import HostVanDetail from './pages/Host/HostVanDetail';
+import HostVanInfo from './pages/Host/HostVanInfo'
+import HostVanPricing from './pages/Host/HostVanPricing'
+import HostVanPhotos from './pages/Host/HostVanPhotos'
+
+
 import './server'
+
 
 
 function App() {
@@ -38,6 +45,12 @@ function App() {
             {/* 跟著母path走，絕對路徑/host/income(現在是相對路徑) */}
             <Route path="income" element={<Income></Income>} />
             <Route path="reviews" element={<Reviews></Reviews>} />
+            <Route path="vans" element={<HostVans></HostVans>} />
+            <Route path="vans/:id" element={<HostVanDetail></HostVanDetail>}>
+              <Route index element={<HostVanInfo></HostVanInfo>} />
+              <Route path="pricing" element={<HostVanPricing></HostVanPricing>} />
+              <Route path="photos" element={<HostVanPhotos></HostVanPhotos>} />
+            </Route>
           </Route>
         </Route>
       </Routes>
