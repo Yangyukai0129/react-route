@@ -65,7 +65,7 @@ export default function HostVanDetail() {
                 </nav>
                 {/* 解構賦值是為了將 currentVan 中的屬性展開，並將它們作為上下文（context）傳遞給子路由 */}
                 {/* 當你在 <Outlet> 中使用 context={{ ...currentVan }} 時，它實際上等同於：
-                    <Outlet context={{ name: "VanName", price: 100, /* 其他屬性... */ }
+                    <Outlet context={{ name: "VanName", price: 100, /* 其他屬性... }}/>*/ }
                 {/* 這樣，子路由可以透過 useOutletContext 簡單地獲取到相應的上下文數據，而不需要深入層次地訪問上下文對象。這使得代碼更簡潔且易於理解，同時也方便了上下文數據的管理和傳遞。 */}
                 <Outlet context={{ currentVan }} />
             </div>
