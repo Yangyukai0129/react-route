@@ -55,10 +55,17 @@ export default function Vans() {
                     className="van-type clear-filters"
                 >clear</Link> */}
                 {/* 寫法二 */}
-                <button onClick={() => setSearchParam({ type: "simple" })} className="van-type simple">simple</button>
-                <button onClick={() => setSearchParam({ type: "rugged" })} className="van-type rugged">rugged</button>
-                <button onClick={() => setSearchParam({ type: "luxury" })} className="van-type luxury">luxury</button>
-                <button onClick={() => setSearchParam({})} className="van-type clear-filters">clear</button>
+                <button onClick={() => setSearchParam({ type: "simple" })}
+                    className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`}
+                >simple</button>
+                <button onClick={() => setSearchParam({ type: "rugged" })}
+                    className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}
+                >rugged</button>
+                <button onClick={() => setSearchParam({ type: "luxury" })}
+                    className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}
+                >luxury</button>
+                {/* 如果沒有篩選的話不會出現clear */}
+                {typeFilter ? <button onClick={() => setSearchParam({})} className="van-type clear-filters">clear</button> : null}
             </div>
             <div className="van-list">
                 {vanElements}
