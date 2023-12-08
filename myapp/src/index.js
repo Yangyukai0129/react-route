@@ -17,6 +17,7 @@ import HostVanDetail from './pages/Host/HostVanDetail';
 import HostVanInfo from './pages/Host/HostVanInfo'
 import HostVanPricing from './pages/Host/HostVanPricing'
 import HostVanPhotos from './pages/Host/HostVanPhotos'
+import NotFound from './pages/NotFound';
 
 
 import './server'
@@ -52,6 +53,8 @@ function App() {
               <Route path="photos" element={<HostVanPhotos></HostVanPhotos>} />
             </Route>
           </Route>
+          {/* 如果沒有其他route符合的話，就使用這個route，放在第一個route下面後看你要放哪邊都可以 */}
+          <Route path="*" element={<NotFound></NotFound>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>)
