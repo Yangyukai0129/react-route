@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useSearchParams } from "react-router-dom";
 import { getVans } from "../../api";
+
+export function loader() {
+    return getVans()
+}
 
 export default function Vans() {
 
-    const [vans, setVans] = useState([])
+    // 改用useLoaderData而不是用useEffect(1)
+    // const [vans, setVans] = useState([])
+    // const [loading, setLoading] = useState(false)
     const [searchParams, setSearchParam] = useSearchParams()
-    const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    // 改用useLoaderData而不是用useEffect(把data改成vans)(2)
+    const vans = useLoaderData()
+    // console.log(data)
     // const location = useLocation()
     // console.log(location)
     // console.log(searchParams.toString())
@@ -15,20 +23,21 @@ export default function Vans() {
     const typeFilter = searchParams.get("type")
     // console.log(typeFilter)
 
-    useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVans()
-                setVans(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-        loadVans()
-    }, [])
+    // 改用useLoaderData而不是用useEffect(3)
+    // useEffect(() => {
+    //     async function loadVans() {
+    //         setLoading(true)
+    //         try {
+    //             const data = await getVans()
+    //             setVans(data)
+    //         } catch (err) {
+    //             setError(err)
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     }
+    //     loadVans()
+    // }, [])
 
     const displayedVans = typeFilter ? vans.filter(item => item.type.toLowerCase() === typeFilter) : vans
 
@@ -60,13 +69,14 @@ export default function Vans() {
         })
     }
 
-    if (loading) {
-        return <h1>Loading...</h1>
-    }
+    // 改用useLoaderData而不是用useEffect(4         )
+    // if (loading) {
+    //     return <h1>Loading...</h1>
+    // }
 
-    if (error) {
-        return <h1>There was an error:{error.message}</h1>
-    }
+    // if (error) {
+    //     return <h1>There was an error:{error.message}</h1>
+    // }
 
     return (
         <div className="van-list-container">
