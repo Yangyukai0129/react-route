@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
+import { getHostVans } from "../../api";
+import { requireAuth } from "../../util";
+
+export async function loader() {
+    await requireAuth()
+    return getHostVans()
+}
 
 export default function HostVans() {
-    const [van, setVan] = useState([])
-    useEffect(() => {
-        fetch("/api/host/vans")
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data.vans)
-                setVan(data.vans)
-            })
-    })
+    // 改用useLoaderData而不是用useEffect(1)
+    // const [van, setVan] = useState([])
+    const van = useLoaderData()
+    // 改用useLoaderData而不是用useEffect(2)
+    // useEffect(() => {
+    //     fetch("/api/host/vans")
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             // console.log(data.vans)
+    //             setVan(data.vans)
+    //         })
+    // })
 
     const hostVansEls = van.map(van => (
         <Link

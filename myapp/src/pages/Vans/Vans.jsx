@@ -13,7 +13,6 @@ export default function Vans() {
     // const [loading, setLoading] = useState(false)
     const [searchParams, setSearchParam] = useSearchParams()
     const [error, setError] = useState(null)
-    // 改用useLoaderData而不是用useEffect(把data改成vans)(2)
     const vans = useLoaderData()
     // console.log(data)
     // const location = useLocation()
@@ -23,7 +22,7 @@ export default function Vans() {
     const typeFilter = searchParams.get("type")
     // console.log(typeFilter)
 
-    // 改用useLoaderData而不是用useEffect(3)
+    // 改用useLoaderData而不是用useEffect(2)
     // useEffect(() => {
     //     async function loadVans() {
     //         setLoading(true)
@@ -69,7 +68,7 @@ export default function Vans() {
         })
     }
 
-    // 改用useLoaderData而不是用useEffect(4         )
+    // 改用useLoaderData而不是用useEffect(3)
     // if (loading) {
     //     return <h1>Loading...</h1>
     // }

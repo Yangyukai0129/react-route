@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, NavLink, Outlet } from "react-router-dom";
+import { getHostVans } from "../../api";
+import { requireAuth } from "../../util";
+
+export async function loader() {
+    await requireAuth()
+    return getHostVans()
+}
 
 export default function HostVanDetail() {
     const param = useParams()
+
     // console.log(param)
     const [currentVan, setCurrentVan] = useState(null)
     useEffect(() => {
