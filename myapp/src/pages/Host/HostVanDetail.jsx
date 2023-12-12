@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, NavLink, Outlet } from "react-router-dom";
+import { useParams, Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { getHostVans } from "../../api";
 import { requireAuth } from "../../util";
 
@@ -10,20 +10,21 @@ export async function loader() {
 
 export default function HostVanDetail() {
     const param = useParams()
+    const currentVan = useLoaderData()
 
     // console.log(param)
-    const [currentVan, setCurrentVan] = useState(null)
-    useEffect(() => {
-        // 使用 param.id 來取得 URL 參數中的 id
-        fetch(`/api/host/vans/${param.id}`)
-            .then(res => res.json())
-            .then(data => {
-                setCurrentVan(data.vans);
-            });
-    }, [param.id])
-    if (!currentVan) {
-        return <h1>Loading...</h1>
-    }
+    // const [currentVan, setCurrentVan] = useState(null)
+    // useEffect(() => {
+    //     // 使用 param.id 來取得 URL 參數中的 id
+    //     fetch(`/api/host/vans/${param.id}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setCurrentVan(data.vans);
+    //         });
+    // }, [param.id])
+    // if (!currentVan) {
+    //     return <h1>Loading...</h1>
+    // }
 
     const activeStyles = {
         fontWeight: "bold",

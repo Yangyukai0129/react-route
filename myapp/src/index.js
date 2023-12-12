@@ -19,7 +19,7 @@ import HostVanPricing from './pages/Host/HostVanPricing'
 import HostVanPhotos from './pages/Host/HostVanPhotos'
 import NotFound from './pages/NotFound';
 import Error from './component/Error'
-import Login from './pages/Login'
+import Login, { loader as loginLoader } from './pages/Login'
 import { requireAuth } from './util';
 
 import './server'
@@ -29,7 +29,10 @@ const router = createBrowserRouter(createRoutesFromElements(
     {/* 可以把path="/"寫成index，如果點擊其他路徑就不會是index所以頁面上不會顯示 */}
     <Route path="/" element={<Home></Home>} />
     <Route path="about" element={<About></About>} />
-    <Route path='login' element={<Login></Login>} />
+    <Route path='login'
+      element={<Login></Login>}
+      loader={loginLoader}
+    />
     {/*也可以這樣寫
             <Route path="vans">
              <Route index element={<Vans></Vans>} />

@@ -42,13 +42,14 @@ export default function HostVans() {
             <h1 className="host-vans-title">Your listed vans</h1>
             <div className="host-vans-list">
                 {
-                    van.length > 0 ? (
-                        <section>
-                            {hostVansEls}
-                        </section>
-                    ) : (
-                        <h2>Loading...</h2>
-                    )
+                    // 因為使用api.js，所以一定會有van就不需要這段代碼
+                    // van.length > 0 ? (
+                    <section>
+                        {hostVansEls}
+                    </section>
+                    // ) : (
+                    //     <h2>Loading...</h2>
+                    // )
                 }
             </div>
         </section>

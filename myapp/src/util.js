@@ -6,11 +6,11 @@ export async function requireAuth() {
     if (!isLoggedIn) {
         // 這是教學的作法，可是會有問題，還找不到問題點
         // throw redirect("/login")
-        const redirectUrl = "/login";
+        const redirectUrl = "/login?message=You must log in first.";
         // 手动执行重定向
         window.location.replace(redirectUrl);
-        // 或者抛出一个自定义的错误，然后在加载器中捕获并处理
+        // 或者抛出一个自定义的错误，然后在加载器中捕获并处理       
         // throw new RedirectError(redirectUrl);
     }
-
+    return null
 }
