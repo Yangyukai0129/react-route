@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useLoaderData, useNavigate, Form } from "react-router-dom"
+import { useLoaderData, useNavigate, Form, redirect } from "react-router-dom"
 import { loginUser } from "../api"
 
 export async function action({ request }) {
@@ -7,8 +7,9 @@ export async function action({ request }) {
     const email = formData.get("email")
     const password = formData.get("password")
     const data = await loginUser({ email, password })
+    localStorage.setItem("login", true)
     console.log(data)
-    return null
+    return window.location.replace("/host") //原寫法return redirect("/host")，但因為migrate.js問題所以會有問題
 }
 
 export function loader({ request }) {
@@ -50,7 +51,12 @@ export default function Login() {
             {message && <h3 className="red">{message}</h3>}
             <h1>Sign in to your account</h1>
             {error && <h3 className="red">{error.message}</h3>}
-            <Form method={"post"} className="login-form">
+            <Form
+                method={"post"}
+                className="login-form"
+                // 用法跟navigate的replace一樣，按返回的時候history stake會把這個記錄刪掉所以不會顯示此頁面
+                replace
+            >
                 <input
                     name="email"
                     // onChange={handleChange}

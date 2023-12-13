@@ -1,7 +1,7 @@
 import { redirect } from "react-router-dom"
 
 export async function requireAuth() {
-    const isLoggedIn = true
+    const isLoggedIn = localStorage.getItem("login")
 
     if (!isLoggedIn) {
         // 這是教學的作法，可是會有問題，還找不到問題點
