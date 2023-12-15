@@ -6,11 +6,12 @@ export async function action({ request }) {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
+    const pathname = new URL(request.url).searchParams.get("redirectTo") || "/host"
     try {
         const data = await loginUser({ email, password })
         localStorage.setItem("login", true)
         console.log(data)
-        return window.location.replace("/host") //原寫法return redirect("/host")，但因為migrate.js問題所以會有問題
+        return window.location.replace(pathname) //原寫法return redirect("/host")，但因為migrate.js問題所以會有問題
     }
     catch (err) {
         return err.message

@@ -57,23 +57,23 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route
         index
         element={<Dashboard></Dashboard>}
-        loader={async () => {
-          return await requireAuth();
+        loader={async ({ request }) => {
+          return await requireAuth(request);
         }}
       />
       {/* 跟著母path走，絕對路徑/host/income(現在是相對路徑) */}
       <Route
         path="income"
         element={<Income></Income>}
-        loader={async () => {
-          return await requireAuth();
+        loader={async ({ request }) => {
+          return await requireAuth(request);
         }}
       />
       <Route
         path="reviews"
         element={<Reviews></Reviews>}
-        loader={async () => {
-          return await requireAuth();
+        loader={async ({ request }) => {
+          return await requireAuth(request);
         }}
       />
       <Route
@@ -89,22 +89,22 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route
           index
           element={<HostVanInfo></HostVanInfo>}
-          loader={async () => {
-            return await requireAuth();
+          loader={async ({ request }) => {
+            return await requireAuth(request);
           }}
         />
         <Route
           path="pricing"
           element={<HostVanPricing></HostVanPricing>}
-          loader={async () => {
-            return await requireAuth();
+          loader={async ({ request }) => {
+            return await requireAuth(request);
           }}
         />
         <Route
           path="photos"
           element={<HostVanPhotos></HostVanPhotos>}
-          loader={async () => {
-            return await requireAuth();
+          loader={async ({ request }) => {
+            return await requireAuth(request);
           }}
         />
       </Route>
