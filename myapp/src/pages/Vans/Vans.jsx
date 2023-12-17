@@ -17,7 +17,6 @@ export default function Vans() {
     // console.log(data)
     // const location = useLocation()
     // console.log(location)
-    // console.log(searchParams.toString())
 
     const typeFilter = searchParams.get("type")
     // console.log(typeFilter)

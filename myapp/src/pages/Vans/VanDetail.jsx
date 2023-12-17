@@ -12,7 +12,7 @@ export default function VanDetail() {
     // const param = useParams()
     const location = useLocation()
     const van = useLoaderData()
-
+    console.log(location)
     // 改用useLoaderData而不是用useEffect(2)
     // const [van, setvan] = useState([null])
     // useEffect(() => {
