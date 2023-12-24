@@ -18,13 +18,13 @@ export async function action({ request }) {
     }
 }
 
-export function loader({ request }) {
-    return new URL(request.url).searchParams.get("message")
-}
+// export function loader({ request }) {
+//     return new URL(request.url).searchParams.get("message")
+// }
 
 export default function Login() {
     // const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
-    const message = useLoaderData()
+    // const message = useLoaderData()
     const [status, setStatus] = useState("idle")
     // const [error, setError] = useState(null)
     const navigate = useNavigate()
@@ -56,7 +56,7 @@ export default function Login() {
 
     return (
         <div className="login-container">
-            {message && <h3 className="red">{message}</h3>}
+            {/* {message && <h3 className="red">{message}</h3>} */}
             <h1>Sign in to your account</h1>
             {errorMessage && <h3 className="red">{errorMessage}</h3>}
             <Form

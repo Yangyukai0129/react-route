@@ -31,7 +31,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="about" element={<About></About>} />
     <Route path='login'
       element={<Login></Login>}
-      loader={loginLoader}
+      // loader={loginLoader}
       action={loginAction}
     />
     {/*也可以這樣寫
