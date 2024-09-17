@@ -47,7 +47,7 @@ export default function Vans() {
                 prevParams.set(key, value)
             }
 
-            // console.log(prevParams.toString())
+            console.log(prevParams.toString())
             return prevParams
         })
     }
